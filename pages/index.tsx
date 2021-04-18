@@ -4,10 +4,10 @@ import HeroOverlayQuotes from "../components/HeroOverlayQuotes";
 import Title from "../components/Title";
 import Bubble from "../components/Bubble";
 import Image from "next/image";
-import { useEffect } from "react";
 // components
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
+import VerticalBar from "../components/RegionalSaleChart";
 // context api
 import { useMenu } from "../context/menuContext";
 
@@ -20,6 +20,14 @@ const images = [
   "/brands/nokia.jpg",
   "/brands/oppo.png",
   "/brands/vivo.svg",
+];
+
+const partners = [
+  "/partners/xiaomi.JPG",
+  "/partners/camfone.JPG",
+  "/partners/honor.JPG",
+  "/partners/itel.JPG",
+  "/partners/tecno.JPG",
 ];
 
 export default function Home() {
@@ -80,8 +88,23 @@ export default function Home() {
           </DisCaption>
         </Wrapper>
         {/* Regional Sales Coverage */}
-        <Title title="Regional Sales & Coverage" position="right"></Title>
-        <Blank></Blank>
+        <Title title="Regional Clients & Coverage" position="right" />
+        {process.browser && <VerticalBar></VerticalBar>}
+        <Title title="Our partners" position="center" />
+        <Brands>
+          {partners.map((img, i) => {
+            return (
+              <Image
+                src={img}
+                key={i}
+                width={80}
+                height={80}
+                layout="intrinsic"
+              ></Image>
+            );
+          })}
+        </Brands>
+        {/* <Blank></Blank> */}
       </Main>
     </Layout>
   );
@@ -95,7 +118,7 @@ const Wrapper = styled.div`
     padding: 100px 50px;
   }
   @media only screen and (max-width: 500px) {
-    padding: 50px 20px;
+    padding: 20px;
   }
 `;
 

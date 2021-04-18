@@ -24,7 +24,7 @@ const Container = styled.div<{ position }>`
   color: #444444;
 
   @media only screen and (max-width: 500px) {
-    padding: 100px 20px;
+    padding: 50px 20px;
   }
 `;
 

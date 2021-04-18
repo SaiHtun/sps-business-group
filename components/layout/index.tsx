@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import Navbar from "../Navbar";
 import Menu from "../Menu";
+import Footer from "../Footer";
 import { useMenu } from "../../context/menuContext";
 
 export default function Layout(props) {
@@ -20,6 +21,7 @@ export default function Layout(props) {
         <Navbar></Navbar>
         {props.children}
       </Right>
+      <Footer></Footer>
     </Container>
   );
 }

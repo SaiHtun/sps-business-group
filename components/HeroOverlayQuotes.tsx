@@ -86,9 +86,11 @@ const MoreAboutBtn = styled.button`
   bottom: 10px;
   right: 10px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
   :hover {
-    color: grey;
+    color: salmon;
+    border: 2px solid salmon;
   }
 
   @media only screen and (max-width: 600px) {
@@ -98,7 +100,7 @@ const MoreAboutBtn = styled.button`
     width: 150px;
     font-size: 1em;
     right: 45%;
-    bottom: 20px;
+    bottom: 60px;
     margin-right: -50px;
   }
 `;
