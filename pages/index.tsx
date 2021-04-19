@@ -7,7 +7,7 @@ import Image from "next/image";
 // components
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
-import VerticalBar from "../components/RegionalSaleChart";
+import RegionalSaleChart from "../components/RegionalSaleChart";
 import Footer from "../components/Footer";
 // context api
 import { useMenu } from "../context/menuContext";
@@ -77,7 +77,9 @@ export default function Home() {
         <ExtensionAndGrowth></ExtensionAndGrowth>
         {/* distribution chart */}
         <Title title="Distribution Model" position="flex-start"></Title>
-        {process.browser ? <DistributionChart></DistributionChart> : null}
+        <ChartWrapper>
+          {process.browser ? <DistributionChart></DistributionChart> : null}
+        </ChartWrapper>
         {/* distribution msg */}
         <Wrapper>
           <DisCaption>
@@ -89,8 +91,13 @@ export default function Home() {
           </DisCaption>
         </Wrapper>
         {/* Regional Sales Coverage */}
-        <Title title="Regional clients & coverage" position="flex-end"></Title>
-        <div>{process.browser && <VerticalBar></VerticalBar>}</div>
+        <Title
+          title="Regional Coverage and Clients"
+          position="flex-end"
+        ></Title>
+        <ChartWrapper>
+          {process.browser && <RegionalSaleChart></RegionalSaleChart>}
+        </ChartWrapper>
         <Title title="Our partners" position="center" />
         <Brands>
           {partners.map((img, i) => {
@@ -109,6 +116,10 @@ export default function Home() {
     </Layout>
   );
 }
+
+const ChartWrapper = styled.div`
+  margin: 100px 0px;
+`;
 
 const Wrapper = styled.div`
   padding: 100px 200px;

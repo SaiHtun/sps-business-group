@@ -89,16 +89,9 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  height: max-content;
+  padding: 0px 20px;
 
-  @media only screen and (max-width: 900px) {
-    padding: 0px 80px;
-  }
-  @media only screen and (max-width: 600px) {
-    padding: 0px 50px;
-    gap: 30px;
-  }
   @media only screen and (max-width: 500px) {
-    padding: 0px 20px;
+    padding: 0px !important;
   }
 `;

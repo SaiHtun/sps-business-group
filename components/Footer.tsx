@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
       <Bottom>
         <p>SPS &copy; 2021</p>
         <Sai>
-          by <span>Sai</span>
+          @ <span>Sai</span>
         </Sai>
       </Bottom>
     </>
@@ -30,7 +30,7 @@ export default Footer;
 
 const Sai = styled.p`
   position: absolute;
-  right: 20px;
+  right: 50px;
 
   span {
     font-family: "Sacramento", cursive;
