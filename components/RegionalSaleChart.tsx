@@ -71,9 +71,8 @@ const options2 = {
 const VerticalBar = () => (
   <Container>
     <Wrapper>
-      <Bar data={data} options={options1} />
+      <Bar data={data} options={options2} />
     </Wrapper>
-    {/* <div style={{ height: "50px" }}></div> */}
     <Wrapper>
       <Doughnut data={data} options={options2} />
     </Wrapper>
@@ -85,14 +84,12 @@ export default VerticalBar;
 const Wrapper = styled.div`
   width: 100%;
   height: 500px;
+  display: block;
 `;
 
 const Container = styled.div`
   width: 100%;
   height: max-content;
-  padding: 0px 100px;
-  display: flex;
-  flex-direction: column;
 
   @media only screen and (max-width: 900px) {
     padding: 0px 80px;

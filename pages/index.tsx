@@ -89,8 +89,8 @@ export default function Home() {
           </DisCaption>
         </Wrapper>
         {/* Regional Sales Coverage */}
-        <Title title="Regional Clients & Coverage" position="flex-end" />
-        {process.browser && <VerticalBar></VerticalBar>}
+        <Title title="Regional clients & coverage" position="flex-end"></Title>
+        <div>{process.browser && <VerticalBar></VerticalBar>}</div>
         <Title title="Our partners" position="center" />
         <Brands>
           {partners.map((img, i) => {

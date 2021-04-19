@@ -25,6 +25,7 @@ const Container = styled.div<{ position }>`
 
   @media only screen and (max-width: 500px) {
     padding: 50px 20px;
+    justify-content: center !important;
   }
 `;
 

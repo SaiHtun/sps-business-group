@@ -23,7 +23,7 @@ export default function Menu() {
 }
 
 const Wrapper = styled.div`
-  border-bottom: 2px solid #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
   /* border-right: 1px solid #c7c7c7;  */
   height: 80px;
   position: relative;

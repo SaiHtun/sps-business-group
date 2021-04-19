@@ -15,22 +15,22 @@ export default function Layout(props) {
   };
 
   return (
-    <Container open={menuOpen}>
-      <Menu></Menu>
-      <Right open={menuOpen} onClick={() => handleCloseMenu()}>
-        <Navbar></Navbar>
-        {props.children}
-      </Right>
-      <Footer></Footer>
-    </Container>
+    <>
+      <Container open={menuOpen}>
+        <Menu></Menu>
+        <Right open={menuOpen} onClick={() => handleCloseMenu()}>
+          <Navbar></Navbar>
+          {props.children}
+        </Right>
+        <Footer></Footer>
+      </Container>
+    </>
   );
 }
 
 const Container = styled.div<{ open: boolean }>`
-  min-height: 90vh;
-  height: max-content;
   overflow-x: hidden;
-  z-index: 100;
+  height: 100vh;
   transition: background-color 0.5s ease-in-out;
 
   ${(props) =>
@@ -44,7 +44,6 @@ const Container = styled.div<{ open: boolean }>`
 
 // conditional margin-left !!
 const Right = styled.div<{ open: boolean }>`
-  /* margin-left: 0px; */
   transition: all 0.3s ease-out;
   width: 100%;
 
