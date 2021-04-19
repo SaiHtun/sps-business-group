@@ -8,7 +8,7 @@ import Image from "next/image";
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
 import RegionalSaleChart from "../components/RegionalSaleChart";
-import Footer from "../components/Footer";
+import HeroImage from "../components/HeroImage";
 // context api
 import { useMenu } from "../context/menuContext";
 
@@ -38,7 +38,7 @@ export default function Home() {
     <Layout>
       <Container>
         <Hero>
-          <HeroImage open={menuOpen}>
+          <HeroImage path="/yangon.jpg">
             <Overlay>
               <HeroOverlayQuotes></HeroOverlayQuotes>
             </Overlay>
@@ -182,32 +182,5 @@ const Overlay = styled.div`
   }
   @media only screen and (max-width: 500px) {
     /* display: none; */
-  }
-`;
-
-const HeroImage = styled.div<{ open: boolean }>`
-  width: 100vw;
-  min-height: 600px;
-  height: max-content;
-  overflow-x: hidden;
-  background: url("/yangon.jpg");
-  background-size: cover;
-  position: relative;
-  display: block;
-  z-index: ${(props) => props.open && -1};
-
-  @media only screen and (max-width: 800px) {
-    height: 600px;
-  }
-  @media only screen and (max-width: 600px) {
-    height: 500px;
-  }
-  @media only screen and (max-width: 500px) {
-    background-position: center;
-    height: 500px;
-  }
-  @media only screen and (max-width: 400px) {
-    background-position: center;
-    height: 500px;
   }
 `;

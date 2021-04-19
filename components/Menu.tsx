@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { useMenu } from "../context/menuContext";
+import Link from "next/link";
 
 export default function Menu() {
   const { menuOpen, setMenuOpen } = useMenu();
@@ -15,9 +16,15 @@ export default function Menu() {
           <span>X</span> Close{" "}
         </Close>
       </Wrapper>
-      <Block onClick={() => console.log("profile")}>Profile</Block>
-      <Block>About</Block>
-      <Block>Career</Block>
+      <Link href="/">
+        <Block onClick={() => console.log("profile")}>Profile</Block>
+      </Link>
+      <Link href="/about">
+        <Block>About</Block>
+      </Link>
+      <Link href="/">
+        <Block>Career</Block>
+      </Link>
     </Container>
   );
 }

@@ -20,10 +20,10 @@ export default function Layout() {
           <span> SPS</span> business group{" "}
         </Brand>
         <Links>
-          <Link href="#">
+          <Link href="/">
             <li>Profile</li>
           </Link>
-          <Link href="#">
+          <Link href="/about">
             <li>About</li>
           </Link>
           <Link href="#">
@@ -57,6 +57,10 @@ const Nav = styled.nav<{ open: boolean }>`
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
+
+  li {
+    cursor: pointer;
+  }
 
   ${(props) =>
     props.open &&

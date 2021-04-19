@@ -92,6 +92,6 @@ const Container = styled.div`
   padding: 0px 20px;
 
   @media only screen and (max-width: 500px) {
-    padding: 0px !important;
+    padding: 0px 5px !important;
   }
 `;

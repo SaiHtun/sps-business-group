@@ -62,9 +62,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media only screen and (max-width: 800px) {
-    margin-top: 100px;
-  }
   @media only screen and (max-width: 500px) {
     padding: 20px;
     font-size: 15px;
