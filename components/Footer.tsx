@@ -38,7 +38,6 @@ const Sai = styled.p`
 `;
 
 const Bottom = styled.div`
-  margin-top: auto;
   position: relative;
   width: 100%;
   height: 60px;
@@ -53,7 +52,7 @@ const Container = styled.div`
   margin-top: 200px;
   width: 100%;
   height: 400px;
-  background-color: #242424;
+  background-color: #1a1919;
   color: whitesmoke;
   display: flex;
   flex-direction: column;
@@ -75,8 +74,9 @@ const Title = styled.h3`
 `;
 
 const Menu = styled.div`
+  min-width: 200px;
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
   padding: 10px 0px;
 `;
 
@@ -87,6 +87,9 @@ const Store = styled.div`
 
   @media only screen and (max-width: 800px) {
     gap: 5px;
+  }
+  @media only screen and (max-width: 500px) {
+    flex-direction: column;
   }
 `;
 

@@ -8,6 +8,7 @@ import Image from "next/image";
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
 import VerticalBar from "../components/RegionalSaleChart";
+import Footer from "../components/Footer";
 // context api
 import { useMenu } from "../context/menuContext";
 
@@ -72,10 +73,10 @@ export default function Home() {
           })}
         </Brands>
         {/* extension and growth */}
-        <Title title="Extension & Growth" position="right"></Title>
+        <Title title="Extension & Growth" position="flex-end"></Title>
         <ExtensionAndGrowth></ExtensionAndGrowth>
         {/* distribution chart */}
-        <Title title="Distribution Model" position="left"></Title>
+        <Title title="Distribution Model" position="flex-start"></Title>
         {process.browser ? <DistributionChart></DistributionChart> : null}
         {/* distribution msg */}
         <Wrapper>
@@ -88,7 +89,7 @@ export default function Home() {
           </DisCaption>
         </Wrapper>
         {/* Regional Sales Coverage */}
-        <Title title="Regional Clients & Coverage" position="right" />
+        <Title title="Regional Clients & Coverage" position="flex-end" />
         {process.browser && <VerticalBar></VerticalBar>}
         <Title title="Our partners" position="center" />
         <Brands>
@@ -104,7 +105,6 @@ export default function Home() {
             );
           })}
         </Brands>
-        {/* <Blank></Blank> */}
       </Main>
     </Layout>
   );
@@ -136,6 +136,10 @@ const Brands = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 50px;
+
+  @media only screen and (max-width: 500px) {
+    padding: 2px;
+  }
 `;
 
 const Blank = styled.div`
@@ -181,6 +185,7 @@ const HeroImage = styled.div<{ open: boolean }>`
   background: url("/yangon.jpg");
   background-size: cover;
   position: relative;
+  display: block;
   z-index: ${(props) => props.open && -1};
 
   @media only screen and (max-width: 800px) {

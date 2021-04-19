@@ -50,7 +50,7 @@ const data = {
   ],
 };
 
-const options = {
+const options1 = {
   scales: {
     yAxes: [
       {
@@ -60,22 +60,39 @@ const options = {
       },
     ],
   },
+  maintainAspectRatio: false,
+};
+
+const options2 = {
+  responsive: true,
+  maintainAspectRatio: false,
 };
 
 const VerticalBar = () => (
   <Container>
-    <Bar data={data} options={options} />
-    <Doughnut data={data} />
+    <Wrapper>
+      <Bar data={data} options={options1} />
+    </Wrapper>
+    {/* <div style={{ height: "50px" }}></div> */}
+    <Wrapper>
+      <Doughnut data={data} options={options2} />
+    </Wrapper>
   </Container>
 );
 
 export default VerticalBar;
 
+const Wrapper = styled.div`
+  width: 100%;
+  height: 500px;
+`;
+
 const Container = styled.div`
+  width: 100%;
+  height: max-content;
   padding: 0px 100px;
   display: flex;
   flex-direction: column;
-  gap: 100px;
 
   @media only screen and (max-width: 900px) {
     padding: 0px 80px;

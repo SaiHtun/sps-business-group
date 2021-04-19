@@ -45,7 +45,7 @@ const StyledRoot = styled.div`
   border-radius: 10px;
 
   @media only screen and (max-width: 600px) {
-    margin: 0px 10%;
+    margin: 0px 5%;
 
     h3 {
       font-size: 18px;

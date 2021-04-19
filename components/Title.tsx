@@ -42,7 +42,7 @@ const Text = styled.h2<{ position }>`
     left: -10px;
 
     ${(props) =>
-      props.position === "right" &&
+      props.position === "flex-end" &&
       css`
         left: auto;
         right: -10px;

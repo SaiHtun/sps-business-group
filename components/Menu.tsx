@@ -23,8 +23,8 @@ export default function Menu() {
 }
 
 const Wrapper = styled.div`
-  border-bottom: 1px solid #c7c7c7;
-  border-right: 1px solid #c7c7c7;
+  border-bottom: 2px solid #c7c7c7;
+  /* border-right: 1px solid #c7c7c7;  */
   height: 80px;
   position: relative;
 `;
@@ -53,7 +53,6 @@ const Container = styled.div<{ open: boolean }>`
   left: 0;
   overflow-x: hidden;
   transition: 0.3s;
-  overflow-x: hidden;
 
   ${(props) =>
     props.open &&
