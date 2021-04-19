@@ -36,77 +36,83 @@ export default function Home() {
 
   return (
     <Layout>
-      <Hero>
-        <HeroImage open={menuOpen}>
-          <Overlay>
-            <HeroOverlayQuotes></HeroOverlayQuotes>
-          </Overlay>
-        </HeroImage>
-      </Hero>
-      <Main>
-        {/* Bubbles */}
-        <Bubbles></Bubbles>
+      <Container>
+        <Hero>
+          <HeroImage open={menuOpen}>
+            <Overlay>
+              <HeroOverlayQuotes></HeroOverlayQuotes>
+            </Overlay>
+          </HeroImage>
+        </Hero>
+        <Main>
+          {/* Bubbles */}
+          <Bubbles></Bubbles>
 
-        {/* Title */}
-        <Title title="The brands we carried" position="center"></Title>
-        {/* Brands */}
-        <Brands>
-          {images.map((img, i) => {
-            return (
-              <Image
-                src={img}
-                key={i}
-                width={80}
-                height={80}
-                layout="intrinsic"
-              ></Image>
-            );
-          })}
-        </Brands>
-        {/* extension and growth */}
-        <Title title="Extension & Growth" position="flex-end"></Title>
-        <ExtensionAndGrowth></ExtensionAndGrowth>
-        {/* distribution chart */}
-        <Title title="Distribution Model" position="flex-start"></Title>
-        <ChartWrapper>
-          {process.browser ? <DistributionChart></DistributionChart> : null}
-        </ChartWrapper>
-        {/* distribution msg */}
-        <Wrapper>
-          <DisCaption>
-            "SPS will enable Myanmar Mobile Phone industry with the
-            corporations, of above distribution model by addressing the
-            industry’s current distribution limitations: product differentiation
-            and time-to-market innovation as well as giving the best customer
-            service experience."
-          </DisCaption>
-        </Wrapper>
-        {/* Regional Sales Coverage */}
-        <Title
-          title="Regional Coverage and Clients"
-          position="flex-end"
-        ></Title>
-        <ChartWrapper>
-          {process.browser && <RegionalSaleChart></RegionalSaleChart>}
-        </ChartWrapper>
-        <Title title="Our partners" position="center" />
-        <Brands>
-          {partners.map((img, i) => {
-            return (
-              <Image
-                src={img}
-                key={i}
-                width={80}
-                height={80}
-                layout="intrinsic"
-              ></Image>
-            );
-          })}
-        </Brands>
-      </Main>
+          {/* Title */}
+          <Title title="The brands we carried" position="center"></Title>
+          {/* Brands */}
+          <Brands>
+            {images.map((img, i) => {
+              return (
+                <Image
+                  src={img}
+                  key={i}
+                  width={80}
+                  height={80}
+                  layout="intrinsic"
+                ></Image>
+              );
+            })}
+          </Brands>
+          {/* extension and growth */}
+          <Title title="Extension & Growth" position="flex-end"></Title>
+          <ExtensionAndGrowth></ExtensionAndGrowth>
+          {/* distribution chart */}
+          <Title title="Distribution Model" position="flex-start"></Title>
+          <ChartWrapper>
+            {process.browser ? <DistributionChart></DistributionChart> : null}
+          </ChartWrapper>
+          {/* distribution msg */}
+          <Wrapper>
+            <DisCaption>
+              "SPS will enable Myanmar Mobile Phone industry with the
+              corporations, of above distribution model by addressing the
+              industry’s current distribution limitations: product
+              differentiation and time-to-market innovation as well as giving
+              the best customer service experience."
+            </DisCaption>
+          </Wrapper>
+          {/* Regional Sales Coverage */}
+          <Title
+            title="Regional Coverage and Clients"
+            position="flex-end"
+          ></Title>
+          <ChartWrapper>
+            {process.browser && <RegionalSaleChart></RegionalSaleChart>}
+          </ChartWrapper>
+          <Title title="Our partners" position="center" />
+          <Brands>
+            {partners.map((img, i) => {
+              return (
+                <Image
+                  src={img}
+                  key={i}
+                  width={80}
+                  height={80}
+                  layout="intrinsic"
+                ></Image>
+              );
+            })}
+          </Brands>
+        </Main>
+      </Container>
     </Layout>
   );
 }
+
+const Container = styled.div`
+  height: 100%;
+`;
 
 const ChartWrapper = styled.div`
   margin-bottom: 100px;
