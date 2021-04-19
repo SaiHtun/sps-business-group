@@ -3,26 +3,24 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <Wrapper>
-      <Container>
-        <Title>SPS business group</Title>
-        <Menu>
-          <Link href="#">Profile</Link>
-          <Link href="#">About</Link>
-          <Link href="#">Career</Link>
-        </Menu>
-        <Store>
-          <p>Check out the available items at </p>
-          <Tele>Telemartmyanmar</Tele>
-        </Store>
-      </Container>
+    <Container>
+      <Title>SPS business group</Title>
+      <Menu>
+        <Link href="#">Profile</Link>
+        <Link href="#">About</Link>
+        <Link href="#">Career</Link>
+      </Menu>
+      <Store>
+        <p>Check out the available items at </p>
+        <Tele>Telemartmyanmar</Tele>
+      </Store>
       <Bottom>
         <p>SPS &copy; 2021</p>
         <Sai>
           @ <span>Sai</span>
         </Sai>
       </Bottom>
-    </Wrapper>
+    </Container>
   );
 };
 
@@ -45,6 +43,7 @@ const Bottom = styled.div`
   position: relative;
   width: 100%;
   height: 60px;
+  margin-top: auto;
   background-color: black;
   display: flex;
   justify-content: center;
@@ -63,7 +62,6 @@ const Container = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 500px) {
-    padding: 20px;
     font-size: 15px;
     font-weight: 200;
   }

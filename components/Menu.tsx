@@ -1,30 +1,30 @@
 import styled, { css } from "styled-components";
 import { useMenu } from "../context/menuContext";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Menu() {
   const { menuOpen, setMenuOpen } = useMenu();
+  const router = useRouter();
 
-  const handleClick = () => {
-    setMenuOpen(!menuOpen);
+  const handleClick = (route) => {
+    setMenuOpen(false);
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(router.push(route));
+      }, 300);
+    });
   };
 
   return (
     <Container open={menuOpen}>
       <Wrapper>
-        <Close onClick={() => handleClick()}>
+        <Close onClick={() => setMenuOpen(false)}>
           <span>X</span> Close{" "}
         </Close>
       </Wrapper>
-      <Link href="/">
-        <Block onClick={() => console.log("profile")}>Profile</Block>
-      </Link>
-      <Link href="/about">
-        <Block>About</Block>
-      </Link>
-      <Link href="/">
-        <Block>Career</Block>
-      </Link>
+      <Block onClick={() => handleClick("/")}>Profile</Block>
+      <Block onClick={() => handleClick("/about")}>About</Block>
+      <Block onClick={() => handleClick("/career")}>Career</Block>
     </Container>
   );
 }

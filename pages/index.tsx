@@ -9,8 +9,6 @@ import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
 import RegionalSaleChart from "../components/RegionalSaleChart";
 import HeroImage from "../components/HeroImage";
-// context api
-import { useMenu } from "../context/menuContext";
 
 const images = [
   "/brands/apple.png",
@@ -32,8 +30,6 @@ const partners = [
 ];
 
 export default function Home() {
-  const { menuOpen, setMenuOpen } = useMenu();
-
   return (
     <Layout>
       <Container>

@@ -35,7 +35,7 @@ export default function HeroOverlayQuotes() {
   const quoteRef = useRef();
 
   useEffect(() => {
-    setInterval(() => {
+    let id = setInterval(() => {
       if (timeRef.current >= 3) {
         timeRef.current = 0;
         setItem(array[timeRef.current]);
@@ -44,6 +44,10 @@ export default function HeroOverlayQuotes() {
         setItem(array[timeRef.current]);
       }
     }, 5000);
+
+    return () => {
+      clearInterval(id);
+    };
   }, []);
 
   useEffect(() => {
