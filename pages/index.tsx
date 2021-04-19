@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import styled from "styled-components";
 import HeroOverlayQuotes from "../components/HeroOverlayQuotes";
 import Title from "../components/Title";
-import Bubble from "../components/Bubble";
+import Bubbles from "../components/Bubbles";
 import Image from "next/image";
 // components
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
@@ -45,17 +45,8 @@ export default function Home() {
       </Hero>
       <Main>
         {/* Bubbles */}
+        <Bubbles></Bubbles>
 
-        <Bubble
-          color="skyblue"
-          size={400}
-          position={{ left: -200, top: 100 }}
-        ></Bubble>
-        <Bubble
-          color="salmon"
-          size={600}
-          position={{ right: -200, top: 300 }}
-        ></Bubble>
         {/* Title */}
         <Title title="The brands we carried" position="center"></Title>
         {/* Brands */}
@@ -118,7 +109,7 @@ export default function Home() {
 }
 
 const ChartWrapper = styled.div`
-  margin: 100px 0px;
+  margin-bottom: 100px;
 `;
 
 const Wrapper = styled.div`

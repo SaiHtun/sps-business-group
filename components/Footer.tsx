@@ -30,7 +30,7 @@ export default Footer;
 
 const Sai = styled.p`
   position: absolute;
-  right: 50px;
+  right: 20px;
 
   span {
     font-family: "Sacramento", cursive;

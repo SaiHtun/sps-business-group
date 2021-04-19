@@ -16,7 +16,9 @@ export default function Layout() {
         >
           <Image src="/menu.svg" width={20} height={20} className="hamburger" />
         </HamWrapper>
-        <Brand>SPS business Group </Brand>
+        <Brand>
+          <span> SPS</span> business group{" "}
+        </Brand>
         <Links>
           <Link href="#">
             <li>Profile</li>
@@ -76,7 +78,16 @@ const Container = styled.div`
   }
 `;
 
-const Brand = styled.p``;
+const Brand = styled.p`
+  color: #444444;
+
+  span {
+    color: #3cadda;
+    font-size: 1.5em;
+    font-weight: 600;
+    font-style: italic;
+  }
+`;
 
 const Links = styled.ul`
   list-style: none;
