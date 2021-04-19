@@ -79,12 +79,14 @@ const Container = styled.div`
 `;
 
 const Brand = styled.p`
+  font-size: 15px;
   color: #444444;
+  font-style: italic;
 
   span {
     color: #3cadda;
-    font-size: 1.5em;
-    font-weight: 600;
+    font-size: 2em !important;
+    font-weight: 800;
     font-style: italic;
   }
 `;

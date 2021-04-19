@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <>
+    <Wrapper>
       <Container>
         <Title>SPS business group</Title>
         <Menu>
@@ -22,11 +22,15 @@ const Footer: React.FC = () => {
           @ <span>Sai</span>
         </Sai>
       </Bottom>
-    </>
+    </Wrapper>
   );
 };
 
 export default Footer;
+
+const Wrapper = styled.div`
+  margin-top: -50px;
+`;
 
 const Sai = styled.p`
   position: absolute;
