@@ -126,10 +126,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Container = styled.div`
-  height: 100%;
-  margin-bottom: -50px;
-`;
+const Container = styled.div``;
 
 const Message = styled.div`
   width: 100%;
@@ -150,8 +147,7 @@ const Message = styled.div`
 
 const Quote = styled.div`
   width: 100%;
-  height: 100%;
-  padding: 100px;
+  padding: 80px;
   text-align: center;
   font-size: 1.5em;
   font-weight: 300;

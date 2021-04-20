@@ -31,6 +31,12 @@ const partners = [
 ];
 
 export default function Home() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
   return (
     <Layout>
       <Container>
@@ -67,7 +73,7 @@ export default function Home() {
           {/* distribution chart */}
           <Title title="Distribution Model" position="flex-start"></Title>
           <ChartWrapper>
-            {process.browser ? <DistributionChart></DistributionChart> : null}
+            {show && <DistributionChart></DistributionChart>}
           </ChartWrapper>
           {/* distribution msg */}
           <Wrapper>
@@ -85,7 +91,7 @@ export default function Home() {
             position="flex-end"
           ></Title>
           <ChartWrapper>
-            {process.browser && <RegionalSaleChart></RegionalSaleChart>}
+            {show && <RegionalSaleChart></RegionalSaleChart>}
           </ChartWrapper>
           <Title title="Our partners" position="center" />
           <Brands>

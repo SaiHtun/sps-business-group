@@ -3,24 +3,26 @@ import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <Container>
-      <Title>SPS business group</Title>
-      <Menu>
-        <Link href="#">Profile</Link>
-        <Link href="#">About</Link>
-        <Link href="#">Career</Link>
-      </Menu>
-      <Store>
-        <p>Check out the available items at </p>
-        <Tele>Telemartmyanmar</Tele>
-      </Store>
-      <Bottom>
-        <p>SPS &copy; 2021</p>
-        <Sai>
-          @ <span>Sai</span>
-        </Sai>
-      </Bottom>
-    </Container>
+    <>
+      <Container>
+        <Title>SPS business group</Title>
+        <Menu>
+          <Link href="#">Profile</Link>
+          <Link href="#">About</Link>
+          <Link href="#">Career</Link>
+        </Menu>
+        <Store>
+          <p>Check out the available items at </p>
+          <Tele>Telemartmyanmar</Tele>
+        </Store>
+        <Bottom>
+          <p>SPS &copy; 2021</p>
+          <Sai>
+            @ <span>Sai</span>
+          </Sai>
+        </Bottom>
+      </Container>
+    </>
   );
 };
 
@@ -48,7 +50,6 @@ const Bottom = styled.div`
 `;
 
 const Container = styled.div`
-  margin-top: 200px;
   width: 100%;
   height: 400px;
   background-color: #1a1919;

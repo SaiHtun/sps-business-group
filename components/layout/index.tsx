@@ -1,11 +1,10 @@
-import React from "react";
 import styled, { css } from "styled-components";
 import Navbar from "../Navbar";
 import Menu from "../Menu";
 import Footer from "../Footer";
 import { useMenu } from "../../context/menuContext";
 
-export default function Layout(props) {
+const Layout: React.FC = (props) => {
   const { menuOpen, setMenuOpen } = useMenu();
 
   const handleCloseMenu = () => {
@@ -16,21 +15,31 @@ export default function Layout(props) {
 
   return (
     <>
-      <Container open={menuOpen}>
+      <Container style={{ scrollbarGutter: "stable" }} open={menuOpen}>
         <Menu></Menu>
         <Right open={menuOpen} onClick={() => handleCloseMenu()}>
           <Navbar></Navbar>
           {props.children}
         </Right>
+        <Push></Push>
         <Footer></Footer>
       </Container>
     </>
   );
-}
+};
+
+export default Layout;
+
+const Push = styled.div`
+  height: 200px;
+`;
 
 const Container = styled.div<{ open: boolean }>`
   overflow-x: hidden;
-  height: 100vh;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -400px;
   transition: background-color 0.5s ease-in-out;
 
   ${(props) =>
@@ -46,6 +55,8 @@ const Container = styled.div<{ open: boolean }>`
 const Right = styled.div<{ open: boolean }>`
   transition: all 0.3s ease-out;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
 
   ${(props) =>
     props.open &&
