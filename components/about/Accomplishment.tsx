@@ -92,4 +92,8 @@ export default Accomplishment;
 
 const Container = styled.div`
   padding: 100px 0px;
+
+  @media only screen and (max-width: 500px) {
+    padding: 50px 0px;
+  }
 `;

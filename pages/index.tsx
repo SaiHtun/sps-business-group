@@ -9,6 +9,7 @@ import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
 import RegionalSaleChart from "../components/RegionalSaleChart";
 import HeroImage from "../components/HeroImage";
+import { useEffect, useState } from "react";
 
 const images = [
   "/brands/apple.png",

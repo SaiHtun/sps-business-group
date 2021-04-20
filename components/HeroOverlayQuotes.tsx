@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import gsap from "gsap";
 
 const array = [
@@ -33,6 +34,7 @@ export default function HeroOverlayQuotes() {
   const [item, setItem] = useState(array[0]);
   const timeRef = useRef(0);
   const quoteRef = useRef();
+  const router = useRouter();
 
   useEffect(() => {
     let id = setInterval(() => {
@@ -55,7 +57,7 @@ export default function HeroOverlayQuotes() {
   }, [item]);
 
   const handleMore = () => {
-    console.log("more more babe!");
+    router.push("/about");
   };
 
   return (

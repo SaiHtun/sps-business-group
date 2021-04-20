@@ -2,9 +2,11 @@ import styled, { css } from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useMenu } from "../context/menuContext";
+import { useRouter } from "next/router";
 
 export default function Layout() {
   const { menuOpen, setMenuOpen } = useMenu();
+  const router = useRouter();
 
   return (
     <Nav open={menuOpen}>
@@ -16,7 +18,7 @@ export default function Layout() {
         >
           <Image src="/menu.svg" width={20} height={20} className="hamburger" />
         </HamWrapper>
-        <Brand>
+        <Brand onClick={() => router.push("/")}>
           <span> SPS</span> business group{" "}
         </Brand>
         <Links>
@@ -52,12 +54,12 @@ const HamWrapper = styled.div`
 const Nav = styled.nav<{ open: boolean }>`
   width: 100vw;
   height: 80px;
-  position: relative;
+  background-color: white;
+  z-index: 10;
   line-height: 80px;
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
-
   li {
     cursor: pointer;
   }

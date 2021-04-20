@@ -91,6 +91,14 @@ const Container = styled.div`
   width: 100%;
   padding: 0px 20px;
 
+  div:first-child {
+    margin-bottom: 100px;
+
+    @media only screen and (max-width: 500px) {
+      margin-bottom: 50px;
+    }
+  }
+
   @media only screen and (max-width: 500px) {
     padding: 0px 5px !important;
   }

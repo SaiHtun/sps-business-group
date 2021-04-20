@@ -26,10 +26,6 @@ const Footer: React.FC = () => {
 
 export default Footer;
 
-const Wrapper = styled.div`
-  margin-top: -50px;
-`;
-
 const Sai = styled.p`
   position: absolute;
   right: 20px;
@@ -68,7 +64,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-  padding: 100px 0px;
+  padding: 80px 0px;
   text-align: center;
 `;
 
