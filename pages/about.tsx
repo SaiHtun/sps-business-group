@@ -7,6 +7,8 @@ import OrgChart from "../components/about/OrgChart";
 import React, { useState, useEffect, useRef } from "react";
 import Para from "../components/about/Para";
 import gsap from "gsap";
+import Bubbles from "../components/Bubbles";
+import PhotoGallery from "../components/PhotoGallery";
 
 const paras = [
   {
@@ -26,43 +28,43 @@ const paras = [
   },
 ];
 
-const messages = [
-  `"SPS is one of the market leader in Mobile Phone Wholesale and Distribution in Myanmar."`,
-  `"SPS is one of the biggest Multi brand distributor that has the most regional capability and coverage in Myanmar and especially emphasis on Wholesale Market."`,
-  `"SPS can easily achieve our goals to be a Distribution Market Leader in a year time with the support of our strong distribution team."`,
+const messages = [];
+
+const images = [
+  {
+    path: "/stores/one.jpg",
+    height: "300px",
+  },
+  {
+    path: "/stores/two.jpg",
+    height: "400px",
+  },
+  {
+    path: "/stores/three.jpg",
+    height: "300px",
+  },
+  {
+    path: "/stores/four.jpg",
+    height: "350px",
+  },
+  {
+    path: "/stores/five.jpg",
+    height: "500px",
+  },
+  {
+    path: "/stores/six.jpg",
+    height: "400px",
+  },
 ];
 
 const About = () => {
-  const [message, setMessage] = useState(messages[0]);
-  const timeRef = useRef(0);
-  const quoteRef = useRef();
-
-  useEffect(() => {
-    let id = setInterval(() => {
-      if (timeRef.current >= 2) {
-        timeRef.current = 0;
-        setMessage(messages[timeRef.current]);
-      } else {
-        timeRef.current = timeRef.current + 1;
-        setMessage(messages[timeRef.current]);
-      }
-    }, 5000);
-
-    return () => {
-      clearInterval(id);
-    };
-  }, []);
-
-  useEffect(() => {
-    gsap.from(quoteRef.current, { opacity: 0, xPercent: 10, duration: 1.2 });
-  }, [message]);
-
   return (
     <Layout>
       <Container>
         <HeroImage path="/team.JPG"></HeroImage>
         <Title title="History in the making" position="center" />
         <Wrapper>
+          <Bubbles></Bubbles>
           <Message>
             <p>
               Since 2000, before we started to reform SPS Co., Ltd, we were in
@@ -92,8 +94,15 @@ const About = () => {
             return <Para key={i} title={p.title} text={p.text}></Para>;
           })}
         </ParaWrapper>
-        <Quote ref={quoteRef}>
-          <h3>{message}</h3>
+        <TitleWrapper>
+          <Title title="Our retail stores" position="center"></Title>
+        </TitleWrapper>
+        <PhotoGallery images={images}></PhotoGallery>
+        <Quote>
+          <h3>
+            "SPS is one of the market leader in Mobile Phone Wholesale and
+            Distribution in Myanmar."
+          </h3>
         </Quote>
       </Container>
     </Layout>
@@ -102,10 +111,16 @@ const About = () => {
 
 export default About;
 
+const TitleWrapper = styled.div`
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
 const OrgWrapper = styled.div``;
 
 const ParaWrapper = styled.div`
-  padding: 100px 100px;
+  padding: 100px 100px 0px 100px;
 
   @media only screen and (max-width: 800px) {
     padding: 50px 30px;
@@ -117,6 +132,7 @@ const ParaWrapper = styled.div`
 
 const Wrapper = styled.div`
   padding: 0px 100px;
+  position: relative;
 
   @media only screen and (max-width: 800px) {
     padding: 0px 80px;
@@ -132,6 +148,7 @@ const Message = styled.div`
   width: 100%;
   height: max-content;
   padding: 50px;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.8);
   color: whitesmoke;
   text-align: center;

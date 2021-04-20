@@ -13,7 +13,9 @@ const Footer: React.FC = () => {
         </Menu>
         <Store>
           <p>Check out the available items at </p>
-          <Tele>Telemartmyanmar</Tele>
+          <Link href="http://telemartmyanmar.com">
+            <Tele>Telemartmyanmar</Tele>
+          </Link>
         </Store>
         <Bottom>
           <p>SPS &copy; 2021</p>

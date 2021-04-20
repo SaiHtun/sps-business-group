@@ -3,7 +3,7 @@ import Bubble from "./Bubble";
 
 const Bubbles = () => {
   return (
-    <>
+    <Container>
       <Bubble
         color="skyblue"
         size={400}
@@ -83,11 +83,15 @@ const Bubbles = () => {
         size={400}
         position={{ right: 200, bottom: 0 }}
       ></Bubble>
-    </>
+    </Container>
   );
 };
 
 export default Bubbles;
+
+const Container = styled.div`
+  z-index: -1;
+`;
 
 const Remover = styled.div`
   @media only screen and (max-width: 600px) {

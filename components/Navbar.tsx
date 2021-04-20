@@ -19,7 +19,7 @@ export default function Layout() {
           <Image src="/menu.svg" width={20} height={20} className="hamburger" />
         </HamWrapper>
         <Brand onClick={() => router.push("/")}>
-          <span> SPS</span> business group{" "}
+          <span> SPS</span> <small> business group</small>
         </Brand>
         <Links>
           <Link href="/">
@@ -28,7 +28,7 @@ export default function Layout() {
           <Link href="/about">
             <li>About</li>
           </Link>
-          <Link href="#">
+          <Link href="/career">
             <li>Career</li>
           </Link>
         </Links>
