@@ -4,11 +4,12 @@ import HeroImage from "../components/HeroImage";
 import Title from "../components/Title";
 import Accomplishment from "../components/about/Accomplishment";
 import OrgChart from "../components/about/OrgChart";
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Para from "../components/about/Para";
-import gsap from "gsap";
+import { scrollShrinkAnimation } from "../utility/animation";
 import Bubbles from "../components/Bubbles";
 import PhotoGallery from "../components/PhotoGallery";
+import { useEffect, useRef } from "react";
 
 const paras = [
   {
@@ -27,8 +28,6 @@ const paras = [
       "Skills include all of the human resource considerations for the organization. SPS always goes beyond the traditional considerations such as training, salary, performance feedback, and career. Innovation is dependent on the business unit, but it needed to be built by knowledge sharing and creative thinking of individuals. Management style is dependent on the business unit, but is usually command and control. Training is encouraged but left up to the individual employee. Our team is respected, developed, and treated with mutual respect to attract and retain the best people for our clients.",
   },
 ];
-
-const messages = [];
 
 const images = [
   {
@@ -58,10 +57,24 @@ const images = [
 ];
 
 const About = () => {
+  const conRef = useRef();
+
+  useEffect(() => {
+    scrollShrinkAnimation(conRef.current);
+  }, []);
+
   return (
-    <Layout>
+    <Layout
+      title="SPS | About"
+      name="History of SPS"
+      content=" we emphasized the business mostly
+    on Wholesale and Distribution channel. So we established our MMD
+    Distribution Channel to both upper and lower Myanmar in 2017."
+    >
       <Container>
-        <HeroImage path="/team.JPG"></HeroImage>
+        <HeroImageWrapper ref={conRef}>
+          <HeroImage path="/team.JPG"></HeroImage>
+        </HeroImageWrapper>
         <Title title="History in the making" position="center" />
         <Wrapper>
           <Bubbles></Bubbles>
@@ -110,6 +123,11 @@ const About = () => {
 };
 
 export default About;
+
+const HeroImageWrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
 
 const TitleWrapper = styled.div`
   @media only screen and (max-width: 800px) {
@@ -169,6 +187,7 @@ const Quote = styled.div`
   font-size: 1.5em;
   font-weight: 300;
   font-style: italic;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;

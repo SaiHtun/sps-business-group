@@ -9,7 +9,8 @@ import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import DistributionChart from "../components/DistributionChart";
 import RegionalSaleChart from "../components/RegionalSaleChart";
 import HeroImage from "../components/HeroImage";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { scrollShrinkAnimation } from "../utility/animation";
 
 const images = [
   "/brands/apple.png",
@@ -32,20 +33,38 @@ const partners = [
 
 export default function Home() {
   const [show, setShow] = useState(false);
+  const conRef = useRef();
 
   useEffect(() => {
     setShow(true);
+    return () => {
+      setShow(false);
+    };
+  }, []);
+
+  useEffect(() => {
+    scrollShrinkAnimation(conRef.current);
   }, []);
 
   return (
-    <Layout>
+    <Layout
+      title="SPS business group"
+      name="SPS business group"
+      content="SPS will enable Myanmar Mobile Phone industry with the
+    corporations, of above distribution model by addressing the
+    industry’s current distribution limitations: product
+    differentiation and time-to-market innovation as well as giving
+    the best customer service experience."
+    >
       <Container>
         <Hero>
-          <HeroImage path="/yangon.jpg">
-            <Overlay>
-              <HeroOverlayQuotes></HeroOverlayQuotes>
-            </Overlay>
-          </HeroImage>
+          <HeroImageWrapper ref={conRef}>
+            <HeroImage path="/yangon.jpg">
+              <Overlay>
+                <HeroOverlayQuotes></HeroOverlayQuotes>
+              </Overlay>
+            </HeroImage>
+          </HeroImageWrapper>
         </Hero>
         <Main>
           {/* Bubbles */}
@@ -113,6 +132,11 @@ export default function Home() {
   );
 }
 
+const HeroImageWrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
+
 const Container = styled.div`
   height: 100%;
 `;
@@ -173,7 +197,6 @@ const Overlay = styled.div`
   left: 0;
   top: 60px;
   background-color: rgba(0, 0, 0, 0.5);
-  /* z-index: 1; */
 
   @media only screen and (max-width: 800px) {
     height: 500px;
@@ -182,8 +205,5 @@ const Overlay = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-  }
-  @media only screen and (max-width: 500px) {
-    /* display: none; */
   }
 `;

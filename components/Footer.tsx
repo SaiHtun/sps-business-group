@@ -6,11 +6,7 @@ const Footer: React.FC = () => {
     <>
       <Container>
         <Title>SPS business group</Title>
-        <Menu>
-          <Link href="#">Profile</Link>
-          <Link href="#">About</Link>
-          <Link href="#">Career</Link>
-        </Menu>
+        <Phone>09756000188(YGN) | 09756000186(MDY)</Phone>
         <Store>
           <p>Check out the available items at </p>
           <Link href="http://telemartmyanmar.com">
@@ -29,6 +25,10 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
+const Phone = styled.p`
+  margin-bottom: 10px;
+`;
 
 const Sai = styled.p`
   position: absolute;
@@ -71,13 +71,6 @@ const Title = styled.h3`
   text-align: center;
 `;
 
-const Menu = styled.div`
-  min-width: 200px;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0px;
-`;
-
 const Store = styled.div`
   display: flex;
   align-items: center;
@@ -88,6 +81,10 @@ const Store = styled.div`
   }
   @media only screen and (max-width: 500px) {
     flex-direction: column;
+
+    p {
+      margin-bottom: 5px;
+    }
   }
 `;
 

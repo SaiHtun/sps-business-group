@@ -88,6 +88,7 @@ const Brand = styled.p`
   font-size: 15px;
   color: #444444;
   font-style: italic;
+  cursor: pointer;
 
   span {
     color: #3cadda;
@@ -108,5 +109,14 @@ const Links = styled.ul`
   li {
     width: 100px;
     text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.3s ease-in-out;
+
+    :hover {
+      color: skyblue;
+    }
   }
 `;

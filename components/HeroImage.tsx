@@ -21,7 +21,7 @@ const HeroImage: React.FC<Props> = ({ path, children }) => {
 export default HeroImage;
 
 const Container = styled.div<{ open: boolean; path: string }>`
-  width: 100vw;
+  width: 100%;
   min-height: 600px;
   height: max-content;
   overflow-x: hidden;

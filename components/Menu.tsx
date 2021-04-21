@@ -100,6 +100,6 @@ const Block = styled.div`
   transition: all 0.5s ease-in-out;
 
   :hover {
-    color: plum;
+    color: skyblue;
   }
 `;

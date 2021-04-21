@@ -68,7 +68,7 @@ const options2 = {
   maintainAspectRatio: false,
 };
 
-const VerticalBar = () => (
+const RegionalSaleChart = () => (
   <Container>
     <Wrapper>
       <Bar data={data} options={options2} />
@@ -79,7 +79,7 @@ const VerticalBar = () => (
   </Container>
 );
 
-export default VerticalBar;
+export default RegionalSaleChart;
 
 const Wrapper = styled.div`
   width: 100%;

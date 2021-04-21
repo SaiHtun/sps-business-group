@@ -3,8 +3,20 @@ import Navbar from "../Navbar";
 import Menu from "../Menu";
 import Footer from "../Footer";
 import { useMenu } from "../../context/menuContext";
+import Head from "next/head";
 
-const Layout: React.FC = (props) => {
+type Props = {
+  title: string;
+  name: string;
+  content: string;
+};
+
+const Layout: React.FC<Props> = ({
+  children,
+  title = "SPS business group",
+  name = " SPS business group",
+  content = "Myanmar most reliable and trusted mobile phone and electronic devices distributor",
+}) => {
   const { menuOpen, setMenuOpen } = useMenu();
 
   const handleCloseMenu = () => {
@@ -15,11 +27,29 @@ const Layout: React.FC = (props) => {
 
   return (
     <>
+      <Head>
+        <title>{title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name={name} content={content} />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+      </Head>
       <Container style={{ scrollbarGutter: "stable" }} open={menuOpen}>
         <Menu></Menu>
         <Right open={menuOpen} onClick={() => handleCloseMenu()}>
           <Navbar></Navbar>
-          {props.children}
+          {children}
         </Right>
         <Push></Push>
         <Footer></Footer>
@@ -36,8 +66,6 @@ const Push = styled.div`
 
 const Container = styled.div<{ open: boolean }>`
   overflow-x: hidden;
-  min-height: 100%;
-  height: auto !important;
   height: 100%;
   margin-bottom: -400px;
   transition: background-color 0.5s ease-in-out;
@@ -55,8 +83,9 @@ const Container = styled.div<{ open: boolean }>`
 const Right = styled.div<{ open: boolean }>`
   transition: all 0.3s ease-out;
   width: 100%;
+  overflow-x: hidden;
   height: 100%;
-  overflow-y: scroll;
+  padding: 0px;
 
   ${(props) =>
     props.open &&

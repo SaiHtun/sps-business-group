@@ -5,6 +5,8 @@ import Title from "../components/Title";
 import Image from "next/image";
 import Bubbles from "../components/Bubbles";
 import PhotoGallery from "../components/PhotoGallery";
+import { useEffect, useRef } from "react";
+import { scrollShrinkAnimation } from "../utility/animation";
 
 const images = [
   {
@@ -53,15 +55,38 @@ const images = [
   },
   {
     path: "/team/meizu2.jpg",
-    height: "300px",
+    height: "250px",
   },
 ];
 
 const Career: React.FC = () => {
+  const conRef = useRef();
+
+  useEffect(() => {
+    scrollShrinkAnimation(conRef.current);
+  }, []);
+
   return (
-    <Layout>
+    <Layout
+      title="SPS | Career"
+      name="Join the winning team"
+      content="SPS promotes personal and professional development, customer
+    orientation, teamwork and innovation, without losing sight of our
+    commitment to sustainability."
+    >
       <Container>
-        <HeroImage path="/team/meizu1.JPG"></HeroImage>
+        <HeroImageWrapper ref={conRef}>
+          <HeroImage path="/team/meizu1.JPG">
+            <Overlay>
+              <HeroTitle>Join the winning team.</HeroTitle>
+              <HeroText>
+                {" "}
+                <span> Do what you love & </span>
+                <br /> <span> create the future you want.</span>
+              </HeroText>
+            </Overlay>
+          </HeroImage>
+        </HeroImageWrapper>
         <Wrapper>
           <Title title="SPS Professional Team" position="center"></Title>
           <ParaWrapper>
@@ -83,7 +108,7 @@ const Career: React.FC = () => {
               clients.
             </Para>
           </ParaWrapper>
-
+          {/* bubbles */}
           <Bubbles></Bubbles>
           <EmployeeContainer>
             <Left>
@@ -109,7 +134,7 @@ const Career: React.FC = () => {
           <PhotoGallery images={images}></PhotoGallery>
           <Quote>
             <h3>
-              "SPS can easily achieve our goals to be a Distribution Market
+              "SPS can easily achieve the goals to be a Distribution Market
               Leader in a year time with the support of our strong distribution
               team."
             </h3>
@@ -122,6 +147,51 @@ const Career: React.FC = () => {
 
 export default Career;
 
+const HeroImageWrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
+`;
+
+const HeroTitle = styled.h2`
+  font-size: 4em;
+  font-weight: 800;
+  margin-bottom: 50px;
+
+  @media only screen and (max-width: 800px) {
+    font-size: 3em;
+  }
+`;
+
+const HeroText = styled.p`
+  line-height: 20px;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  overflow: hidden;
+  width: 70vw;
+  height: 500px;
+  left: 0;
+  top: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 80px;
+
+  @media only screen and (max-width: 800px) {
+    height: 500px;
+  }
+  @media only screen and (max-width: 600px) {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+  }
+`;
+
 const TitleWrapper = styled.div`
   @media only screen and (max-width: 800px) {
     display: none;
@@ -130,6 +200,7 @@ const TitleWrapper = styled.div`
 
 const Quote = styled.div`
   width: 100%;
+  overflow: hidden;
   padding: 80px;
   text-align: center;
   font-size: 1.5em;
@@ -150,10 +221,12 @@ const Quote = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
+  overflow: hidden;
 `;
 
 const Container = styled.div`
   color: #444444;
+  overflow-x: hidden;
 `;
 
 const ParaWrapper = styled.div`

@@ -42,6 +42,7 @@ const MasonryImage = styled.img<{ height: string }>`
 const MasonryWrapper = styled.div`
   margin-bottom: 100px;
   z-index: 10;
+  overflow: hidden;
   .my-masonry-grid {
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */

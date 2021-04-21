@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Yeseva One
+- Font Author: Copyright 2012 The Yeseva One Project Authors (lemonad@jovanny.ru), with Reserved Font Name "Yeseva".
+- Font Source: http://fonts.gstatic.com/s/yesevaone/v15/OpNJno4ck8vc-xYpwWWxpipfWhXD00c.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
