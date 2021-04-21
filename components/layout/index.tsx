@@ -66,6 +66,8 @@ const Push = styled.div`
 
 const Container = styled.div<{ open: boolean }>`
   overflow-x: hidden;
+  min-height: 100%;
+  height: auto !important;
   height: 100%;
   margin-bottom: -400px;
   transition: background-color 0.5s ease-in-out;
