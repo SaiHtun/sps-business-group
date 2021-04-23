@@ -45,9 +45,10 @@ const Layout: React.FC<Props> = ({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Container style={{ scrollbarGutter: "stable" }} open={menuOpen}>
+      <Container  open={menuOpen}>
         <Menu></Menu>
         <Right open={menuOpen} onClick={() => handleCloseMenu()}>
+          <Overlay open={menuOpen}></Overlay>
           <Navbar></Navbar>
           {children}
         </Right>
@@ -60,6 +61,22 @@ const Layout: React.FC<Props> = ({
 
 export default Layout;
 
+const Overlay = styled.div<{ open: boolean}>`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  ${props => props.open && css`
+    opacity: 1;
+    display: block;
+  `};
+`;
+
 const Push = styled.div`
   height: 200px;
 `;
@@ -70,13 +87,13 @@ const Container = styled.div<{ open: boolean }>`
   height: auto !important;
   height: 100%;
   margin-bottom: -400px;
-  transition: background-color 0.5s ease-in-out;
+  z-index: 100;
 
   ${(props) =>
     props.open &&
     css`
-      background-color: rgba(0, 0, 0, 0.6);
-      height: 100vh;
+      min-height: 10px;
+      height: 100vh !important;
       overflow-y: hidden;
     `};
 `;
@@ -93,6 +110,8 @@ const Right = styled.div<{ open: boolean }>`
     props.open &&
     css`
       margin-left: 400px;
+      max-height: 100vh !important;
+      overflow: hidden;
     `};
 
   @media only screen and (max-width: 500px) {

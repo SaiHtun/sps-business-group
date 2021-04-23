@@ -135,6 +135,7 @@ export default function Home() {
 const HeroImageWrapper = styled.div`
   width: 100%;
   overflow: hidden;
+  z-index: -10;
 `;
 
 const Container = styled.div`
@@ -177,9 +178,7 @@ const Brands = styled.div`
   }
 `;
 
-const Blank = styled.div`
-  height: 600px;
-`;
+
 
 const Main = styled.div`
   position: relative;
