@@ -13,34 +13,35 @@ import { useState, useEffect, useRef } from "react";
 import { scrollShrinkAnimation } from "../utility/animation";
 
 const images = [
-  "/brands/apple.png",
+  "/brands/oneplus.png",
   "/brands/samsung.png",
-  "/brands/sony.jpg",
+  "/brands/oraimo.png",
   "/brands/xiaomi.png",
   "/brands/huawei.png",
-  "/brands/nokia.jpg",
+  "/partners/itel.JPG",
   "/brands/oppo.png",
   "/brands/vivo.svg",
 ];
 
 const partners = [
   "/partners/xiaomi.JPG",
-  "/partners/camfone.JPG",
+  "/brands/oneplus.png",
   "/partners/honor.JPG",
   "/partners/itel.JPG",
-  "/partners/tecno.JPG",
+  "/brands/oraimo.png",
 ];
 
 export default function Home() {
-  const [show, setShow] = useState(false);
   const conRef = useRef();
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
-    setShow(true);
+    setShow(true)
+
     return () => {
-      setShow(false);
-    };
-  }, []);
+      setShow(false)
+    }
+  }, [])
 
   useEffect(() => {
     scrollShrinkAnimation(conRef.current);
@@ -92,9 +93,9 @@ export default function Home() {
           {/* distribution chart */}
           <Title title="Distribution Model" position="flex-start"></Title>
           <ChartWrapper>
-            {show && <DistributionChart></DistributionChart>}
-          </ChartWrapper>
-          {/* distribution msg */}
+            {process.browser && show ? <DistributionChart></DistributionChart> : null}
+          </ChartWrapper> 
+          {/* distribution msg  */}
           <Wrapper>
             <DisCaption>
               "SPS will enable Myanmar Mobile Phone industry with the
@@ -110,7 +111,7 @@ export default function Home() {
             position="flex-end"
           ></Title>
           <ChartWrapper>
-            {show && <RegionalSaleChart></RegionalSaleChart>}
+            <RegionalSaleChart></RegionalSaleChart>
           </ChartWrapper>
           <Title title="Our partners" position="center" />
           <Brands>

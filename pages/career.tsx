@@ -76,7 +76,7 @@ const Career: React.FC = () => {
     >
       <Container>
         <HeroImageWrapper ref={conRef}>
-          <HeroImage path="/team/meizu1.JPG">
+          <HeroImage path="/team/one.jpg">
             <Overlay>
               <HeroTitle>Join the winning team.</HeroTitle>
               <HeroText>
