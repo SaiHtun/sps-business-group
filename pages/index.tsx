@@ -26,6 +26,7 @@ const images = [
 const partners = [
   "/partners/xiaomi.JPG",
   "/brands/oneplus.png",
+  "/brands/huawei.png",
   "/partners/honor.JPG",
   "/partners/itel.JPG",
   "/brands/oraimo.png",
