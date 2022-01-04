@@ -1,16 +1,7 @@
 import styled from "styled-components";
 import Masonry from "react-masonry-css";
 
-type Image = {
-  path: string;
-  height: string;
-};
-
-type Props = {
-  images: Image[];
-};
-
-const PhotoGallery: React.FC<Props> = ({ images }) => {
+const PhotoGallery = ({images}) => {
   return (
     <MasonryWrapper>
       <Masonry
@@ -21,9 +12,9 @@ const PhotoGallery: React.FC<Props> = ({ images }) => {
         {images.map((image, i) => {
           return (
             <MasonryImage
-              src={image.path}
+              src={image.fields.file.url}
               key={i}
-              height={image.height}
+              height="300"
             ></MasonryImage>
           );
         })}

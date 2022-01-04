@@ -5,18 +5,13 @@ import Footer from "../Footer";
 import { useMenu } from "../../context/menuContext";
 import Head from "next/head";
 
-type Props = {
-  title: string;
-  name: string;
-  content: string;
-};
-
-const Layout: React.FC<Props> = ({
-  children,
-  title = "SPS business group",
-  name = " SPS business group",
-  content = "Myanmar most reliable and trusted mobile phone and electronic devices distributor",
-}) => {
+const Layout = ({
+    children,
+    title = "SPS business group",
+    name = " SPS business group",
+    content = "Myanmar most reliable and trusted mobile phone and electronic devices distributor",
+  }) => {
+    
   const { menuOpen, setMenuOpen } = useMenu();
 
   const handleCloseMenu = () => {
@@ -52,14 +47,16 @@ const Layout: React.FC<Props> = ({
           <Navbar></Navbar>
           {children}
         </Right>
-        <Push></Push>
-        <Footer></Footer>
+        {/* <Push></Push> */}
+        {/* <Footer></Footer> */}
       </Container>
     </>
   );
 };
 
 export default Layout;
+
+
 
 const Overlay = styled.div<{ open: boolean}>`
   position: fixed;

@@ -9,7 +9,10 @@ import Para from "../components/about/Para";
 import { scrollShrinkAnimation } from "../utility/animation";
 import Bubbles from "../components/Bubbles";
 import PhotoGallery from "../components/PhotoGallery";
+import Footer from '../components/Footer';
 import { useEffect, useRef } from "react";
+import client from '../utility/contentfulClient';
+import { GetServerSideProps } from 'next'
 
 const paras = [
   {
@@ -29,35 +32,10 @@ const paras = [
   },
 ];
 
-const images = [
-  {
-    path: "/stores/one.jpg",
-    height: "300px",
-  },
-  {
-    path: "/stores/two.jpg",
-    height: "400px",
-  },
-  {
-    path: "/stores/three.jpg",
-    height: "300px",
-  },
-  {
-    path: "/stores/four.jpg",
-    height: "350px",
-  },
-  {
-    path: "/stores/five.jpg",
-    height: "500px",
-  },
-  {
-    path: "/stores/six.jpg",
-    height: "400px",
-  },
-];
 
-const About = () => {
+const About = (props) => {
   const conRef = useRef();
+  const {hero, stores, phoneNumbers} = props.data;
 
   useEffect(() => {
     scrollShrinkAnimation(conRef.current);
@@ -73,7 +51,7 @@ const About = () => {
     >
       <Container>
         <HeroImageWrapper ref={conRef}>
-          <HeroImage path="/team.JPG"></HeroImage>
+          <HeroImage path={hero.fields.file.url}></HeroImage>
         </HeroImageWrapper>
         <Title title="History in the making" position="center" />
         <Wrapper>
@@ -110,7 +88,7 @@ const About = () => {
         <TitleWrapper>
           <Title title="Our retail stores" position="center"></Title>
         </TitleWrapper>
-        <PhotoGallery images={images}></PhotoGallery>
+        <PhotoGallery images={stores}></PhotoGallery>
         <Quote>
           <h3>
             "SPS is one of the market leader in Mobile Phone Wholesale and
@@ -118,11 +96,29 @@ const About = () => {
           </h3>
         </Quote>
       </Container>
+      <Push></Push>
+      <Footer numbers={phoneNumbers}></Footer>
     </Layout>
   );
 };
 
 export default About;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const entry = await client.getEntry("VTGe5N72Q2d1kLDAWVMv7");
+  const phones = await client.getEntry("345dhe02eT5sX9BatoxZAj");
+
+  return {
+    props: {
+      data: {
+        hero: entry.fields.hero,
+        stores: entry.fields.stores,
+        phoneNumbers: phones.fields.numbers
+      }
+    }
+  }
+
+}
 
 const HeroImageWrapper = styled.div`
   width: 100%;
@@ -133,6 +129,10 @@ const TitleWrapper = styled.div`
   @media only screen and (max-width: 800px) {
     display: none;
   }
+`;
+
+const Push = styled.div`
+  height: 200px;
 `;
 
 const OrgWrapper = styled.div``;

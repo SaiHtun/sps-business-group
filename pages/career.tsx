@@ -5,62 +5,19 @@ import Title from "../components/Title";
 import Image from "next/image";
 import Bubbles from "../components/Bubbles";
 import PhotoGallery from "../components/PhotoGallery";
-import { useEffect, useRef } from "react";
+import Footer from '../components/Footer';
+import { useEffect, useRef, useState } from "react";
 import { scrollShrinkAnimation } from "../utility/animation";
+import client from '../utility/contentfulClient';
+import { GetServerSideProps } from 'next'
 
-const images = [
-  {
-    path: "/team/one.jpg",
-    height: "300px",
-  },
-  {
-    path: "/team/two.jpg",
-    height: "400px",
-  },
-  {
-    path: "/team/three.jpg",
-    height: "600px",
-  },
-  {
-    path: "/team/four.jpg",
-    height: "500px",
-  },
-  {
-    path: "/team/one.jpg",
-    height: "300px",
-  },
-  {
-    path: "/team/five.jpg",
-    height: "200px",
-  },
-  {
-    path: "/team/six.jpg",
-    height: "300px",
-  },
-  {
-    path: "/team/seven.jpg",
-    height: "600px",
-  },
-  {
-    path: "/team/eight.jpg",
-    height: "500px",
-  },
-  {
-    path: "/team/nine.jpg",
-    height: "400px",
-  },
-  {
-    path: "/team/ten.jpg",
-    height: "300px",
-  },
-  {
-    path: "/team/meizu2.jpg",
-    height: "250px",
-  },
-];
+type Props = {
+  data: any
+}
 
-const Career: React.FC = () => {
+const Career: React.FC<Props> = (props) => {
   const conRef = useRef();
+  const {hero, team, phoneNumbers} = props.data;
 
   useEffect(() => {
     scrollShrinkAnimation(conRef.current);
@@ -76,7 +33,7 @@ const Career: React.FC = () => {
     >
       <Container>
         <HeroImageWrapper ref={conRef}>
-          <HeroImage path="/team/one.jpg">
+          <HeroImage path={hero.fields.file.url}>
             <Overlay>
               <HeroTitle>Join the winning team.</HeroTitle>
               <HeroText>
@@ -131,7 +88,7 @@ const Career: React.FC = () => {
             <Title title="The most diverse workface" position="center"></Title>
           </TitleWrapper>
           {/* masonry */}
-          <PhotoGallery images={images}></PhotoGallery>
+          <PhotoGallery images={team}></PhotoGallery>
           <Quote>
             <h3>
               "SPS can easily achieve the goals to be a Distribution Market
@@ -141,11 +98,32 @@ const Career: React.FC = () => {
           </Quote>
         </Wrapper>
       </Container>
+      <Push></Push>
+      <Footer numbers={phoneNumbers}></Footer>
     </Layout>
   );
 };
 
 export default Career;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const entry = await client.getEntry("dSNN5kvNC5nPI19LIaGFO");
+  const phones = await client.getEntry("345dhe02eT5sX9BatoxZAj");
+
+  return {
+    props: {
+      data: {
+        hero: entry.fields.hero,
+        team: entry.fields.team,
+        phoneNumbers: phones.fields.numbers
+      }
+    }
+  }
+}
+
+const Push = styled.div`
+  height: 200px;
+`;
 
 const HeroImageWrapper = styled.div`
   width: 100%;

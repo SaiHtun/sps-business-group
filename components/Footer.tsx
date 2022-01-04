@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-const Footer: React.FC = () => {
+const Footer = ({numbers}) => {
   return (
     <>
       <Container>
         <Title>SPS business group</Title>
-        <Phone>09756000188(YGN) | 09756000186(MDY)</Phone>
+        <PhoneWrapper>
+          { numbers.map((num, i) => <Phone key={i}>{num}</Phone>)}
+        </PhoneWrapper>
         <Store>
           <p>Check out the available items at </p>
           <Link href="http://telemartmyanmar.com">
@@ -26,6 +28,11 @@ const Footer: React.FC = () => {
 
 export default Footer;
 
+const PhoneWrapper = styled.div`
+  display: flex;
+  gap: 5px;
+`;
+
 const Phone = styled.p`
   margin-bottom: 10px;
 `;
@@ -38,6 +45,8 @@ const Sai = styled.p`
     font-family: "Sacramento", cursive;
   }
 `;
+
+
 
 const Bottom = styled.div`
   position: relative;

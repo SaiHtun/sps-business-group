@@ -6,35 +6,19 @@ import Bubbles from "../components/Bubbles";
 import Image from "next/image";
 // components
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
+import Footer from '../components/Footer';
 import DistributionChart from "../components/DistributionChart";
 import RegionalSaleChart from "../components/RegionalSaleChart";
 import HeroImage from "../components/HeroImage";
 import { useState, useEffect, useRef } from "react";
 import { scrollShrinkAnimation } from "../utility/animation";
+import client from '../utility/contentfulClient';
+import { GetServerSideProps } from 'next'
 
-const images = [
-  "/brands/oneplus.png",
-  "/brands/samsung.png",
-  "/brands/oraimo.png",
-  "/brands/xiaomi.png",
-  "/brands/huawei.png",
-  "/partners/itel.JPG",
-  "/brands/oppo.png",
-  "/brands/vivo.svg",
-];
-
-const partners = [
-  "/partners/xiaomi.JPG",
-  "/brands/oneplus.png",
-  "/brands/huawei.png",
-  "/partners/honor.JPG",
-  "/partners/itel.JPG",
-  "/brands/oraimo.png",
-];
-
-export default function Home() {
+export default function Home(props) {
   const conRef = useRef();
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
+  const {hero, brandimages, partnerimages, phoneNumbers } = props.data;
 
   useEffect(() => {
     setShow(true)
@@ -61,7 +45,7 @@ export default function Home() {
       <Container>
         <Hero>
           <HeroImageWrapper ref={conRef}>
-            <HeroImage path="/yangon.jpg">
+            <HeroImage path={hero.fields.file.url}>
               <Overlay>
                 <HeroOverlayQuotes></HeroOverlayQuotes>
               </Overlay>
@@ -76,10 +60,10 @@ export default function Home() {
           <Title title="The brands we carried" position="center"></Title>
           {/* Brands */}
           <Brands>
-            {images.map((img, i) => {
+            {brandimages.map((img, i) => {
               return (
                 <Image
-                  src={img}
+                  src={img.fields.file.url}
                   key={i}
                   width={80}
                   height={80}
@@ -116,10 +100,10 @@ export default function Home() {
           </ChartWrapper>
           <Title title="Our partners" position="center" />
           <Brands>
-            {partners.map((img, i) => {
+            {partnerimages.map((img, i) => {
               return (
                 <Image
-                  src={img}
+                  src={img.fields.file.url}
                   key={i}
                   width={80}
                   height={80}
@@ -130,8 +114,27 @@ export default function Home() {
           </Brands>
         </Main>
       </Container>
+      <Push></Push>
+      <Footer numbers={phoneNumbers}></Footer>
     </Layout>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const entry = await client.getEntry("23Y6vLog4beD58ye26cgW5");
+  const phones = await client.getEntry("345dhe02eT5sX9BatoxZAj");
+
+  return {
+    props: {
+      data: {
+        hero: entry.fields.hero,
+        brandimages: entry.fields.brandimages,
+        partnerimages: entry.fields.partnerimages,
+        phoneNumbers: phones.fields.numbers
+      }
+    }
+  }
+
 }
 
 const HeroImageWrapper = styled.div`
@@ -143,6 +146,11 @@ const HeroImageWrapper = styled.div`
 const Container = styled.div`
   height: 100%;
 `;
+
+const Push = styled.div`
+  height: 200px;
+`;
+
 
 const ChartWrapper = styled.div`
   margin-bottom: 100px;
