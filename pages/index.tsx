@@ -58,7 +58,7 @@ export default function Home(props) {
             {brandimages.map((img, i) => {
               return (
                 <Image
-                  src={img.fields.file.url}
+                  src={"https:" + img.fields.file.url}
                   key={i}
                   width={80}
                   height={80}
@@ -98,7 +98,7 @@ export default function Home(props) {
             {partnerimages.map((img, i) => {
               return (
                 <Image
-                  src={img.fields.file.url}
+                  src={"https:" + img.fields.file.url}
                   key={i}
                   width={80}
                   height={80}
