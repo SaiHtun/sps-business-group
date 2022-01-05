@@ -7,26 +7,19 @@ import Image from "next/image";
 // components
 import ExtensionAndGrowth from "../components/ExtensionAndGrowth";
 import Footer from '../components/Footer';
-import DistributionChart from "../components/DistributionChart";
 import RegionalSaleChart from "../components/RegionalSaleChart";
 import HeroImage from "../components/HeroImage";
 import { useState, useEffect, useRef } from "react";
 import { scrollShrinkAnimation } from "../utility/animation";
 import client from '../utility/contentfulClient';
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
+
+const DynamicDistriChart = dynamic(() => import("../components/DistributionChart"));
 
 export default function Home(props) {
   const conRef = useRef();
-  const [show, setShow] = useState(false);
   const {hero, brandimages, partnerimages, phoneNumbers } = props.data;
-
-  useEffect(() => {
-    setShow(true)
-
-    return () => {
-      setShow(false)
-    }
-  }, [])
 
   useEffect(() => {
     scrollShrinkAnimation(conRef.current);
@@ -78,7 +71,7 @@ export default function Home(props) {
           {/* distribution chart */}
           <Title title="Distribution Model" position="flex-start"></Title>
           <ChartWrapper>
-            {process.browser && show ? <DistributionChart></DistributionChart> : null}
+            <DynamicDistriChart></DynamicDistriChart>
           </ChartWrapper> 
           {/* distribution msg  */}
           <Wrapper>

@@ -3,7 +3,6 @@ import Layout from "../components/layout";
 import HeroImage from "../components/HeroImage";
 import Title from "../components/Title";
 import Accomplishment from "../components/about/Accomplishment";
-import OrgChart from "../components/about/OrgChart";
 import React from "react";
 import Para from "../components/about/Para";
 import { scrollShrinkAnimation } from "../utility/animation";
@@ -13,6 +12,9 @@ import Footer from '../components/Footer';
 import { useEffect, useRef, useState } from "react";
 import client from '../utility/contentfulClient';
 import { GetServerSideProps } from 'next'
+import dynamic from 'next/dynamic';
+
+const DynamicOrgChart = dynamic(() => import('../components/about/OrgChart'))
 
 const paras = [
   {
@@ -42,13 +44,6 @@ const About = (props) => {
     scrollShrinkAnimation(conRef.current);
   }, []);
 
-  useEffect(() => {
-    setShow(true)
-
-    return () => {
-      setShow(false)
-    }
-  }, [])
 
   return (
     <Layout
@@ -85,7 +80,7 @@ const About = (props) => {
           <Accomplishment></Accomplishment>
           {/* Org chart */}
           <OrgWrapper>
-            {process.browser && show? <OrgChart></OrgChart> : null}
+            <DynamicOrgChart></DynamicOrgChart>
           </OrgWrapper>
           {/* paragraphs */}
         </Wrapper>
