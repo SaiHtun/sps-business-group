@@ -15,7 +15,9 @@ import client from '../utility/contentfulClient';
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 
-const DynamicDistriChart = dynamic(() => import("../components/DistributionChart"));
+const DynamicDistriChart = dynamic(() => import("../components/DistributionChart"), {
+  ssr: false,
+});
 
 export default function Home(props) {
   const conRef = useRef();

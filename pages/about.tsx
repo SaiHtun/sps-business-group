@@ -14,7 +14,9 @@ import client from '../utility/contentfulClient';
 import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic';
 
-const DynamicOrgChart = dynamic(() => import('../components/about/OrgChart'))
+const DynamicOrgChart = dynamic(() => import('../components/about/OrgChart'), {
+  ssr: false,
+})
 
 const paras = [
   {
