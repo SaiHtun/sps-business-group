@@ -10,11 +10,11 @@ const OrgChart = () => {
             <RootTitle>Managing Director</RootTitle>
           </StyledRoot>
         }
-        lineBorderRadius="10px"
+        lineBorderRadius={"10px"}
         lineColor="salmon"
-        lineHeight="30px"
-        lineWidth="3px"
-        nodePadding="5px"
+        lineHeight={"30px"}
+        lineWidth={"3px"}
+        nodePadding={"5px"}
       >
         <TreeNode label={<StyledLabel>Director</StyledLabel>}></TreeNode>
         <TreeNode label={<StyledLabel>General Manager</StyledLabel>}>
@@ -81,10 +81,6 @@ const StyledRoot = styled.div`
 `;
 
 const RootTitle = styled.h3`
-  color: white;
-`;
-
-const RootText = styled.p`
   color: white;
 `;
 

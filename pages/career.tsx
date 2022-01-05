@@ -6,7 +6,7 @@ import Image from "next/image";
 import Bubbles from "../components/Bubbles";
 import PhotoGallery from "../components/PhotoGallery";
 import Footer from '../components/Footer';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { scrollShrinkAnimation } from "../utility/animation";
 import client from '../utility/contentfulClient';
 import { GetServerSideProps } from 'next'
@@ -29,7 +29,7 @@ const Career: React.FC<Props> = (props) => {
       name="Join the winning team"
       content="SPS promotes personal and professional development, customer
     orientation, teamwork and innovation, without losing sight of our
-    commitment to sustainability."
+    commitment to sustainability.."
     >
       <Container>
         <HeroImageWrapper ref={conRef}>
@@ -87,7 +87,6 @@ const Career: React.FC<Props> = (props) => {
           <TitleWrapper>
             <Title title="The most diverse workface" position="center"></Title>
           </TitleWrapper>
-          {/* masonry */}
           <PhotoGallery images={team}></PhotoGallery>
           <Quote>
             <h3>

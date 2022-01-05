@@ -3,7 +3,6 @@ import { Tree, TreeNode } from "react-organizational-chart";
 
 const DistributionChart = () => {
   return (
-    <Container>
       <Tree
         label={
           <StyledRoot>
@@ -11,11 +10,11 @@ const DistributionChart = () => {
             <RootText>Retail-SPS Wholesale-MMD Distribution</RootText>
           </StyledRoot>
         }
-        lineBorderRadius="10px"
+        lineBorderRadius={"10px"}
         lineColor="salmon"
-        lineHeight="30px"
-        lineWidth="3px"
-        nodePadding="5px"
+        lineHeight={"30px"}
+        lineWidth={"3px"}
+        nodePadding={"5px"}
       >
         <TreeNode label={<StyledLabel>Consumer</StyledLabel>}></TreeNode>
         <TreeNode label={<StyledLabel>Whlesale</StyledLabel>}>
@@ -29,13 +28,11 @@ const DistributionChart = () => {
           </TreeNode>
         </TreeNode>
       </Tree>
-    </Container>
   );
 };
 
 export default DistributionChart;
 
-const Container = styled.div``;
 
 const StyledRoot = styled.div`
   color: plum;

@@ -10,7 +10,7 @@ import { scrollShrinkAnimation } from "../utility/animation";
 import Bubbles from "../components/Bubbles";
 import PhotoGallery from "../components/PhotoGallery";
 import Footer from '../components/Footer';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import client from '../utility/contentfulClient';
 import { GetServerSideProps } from 'next'
 
@@ -35,11 +35,20 @@ const paras = [
 
 const About = (props) => {
   const conRef = useRef();
+  const [ show, setShow ] = useState(false);
   const {hero, stores, phoneNumbers} = props.data;
 
   useEffect(() => {
     scrollShrinkAnimation(conRef.current);
   }, []);
+
+  useEffect(() => {
+    setShow(true)
+
+    return () => {
+      setShow(false)
+    }
+  }, [])
 
   return (
     <Layout
@@ -76,7 +85,7 @@ const About = (props) => {
           <Accomplishment></Accomplishment>
           {/* Org chart */}
           <OrgWrapper>
-            {process.browser ? <OrgChart></OrgChart> : null}
+            {process.browser && show? <OrgChart></OrgChart> : null}
           </OrgWrapper>
           {/* paragraphs */}
         </Wrapper>

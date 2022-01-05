@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import Navbar from "../Navbar";
 import Menu from "../Menu";
-import Footer from "../Footer";
 import { useMenu } from "../../context/menuContext";
 import Head from "next/head";
 
@@ -47,8 +46,6 @@ const Layout = ({
           <Navbar></Navbar>
           {children}
         </Right>
-        {/* <Push></Push> */}
-        {/* <Footer></Footer> */}
       </Container>
     </>
   );
